@@ -6,6 +6,7 @@
 // Export routes
 export { default as setupRoutes } from './src/routes/index.js';
 export { default as agentsRouter } from './src/routes/agents.js';
+export { default as anpRouter } from './src/routes/anp.js';
 export { default as memoryRouter } from './src/routes/memory.js';
 export { default as chatRouter } from './src/routes/chat.js';
 export { default as healthRouter } from './src/routes/health.js';
@@ -17,6 +18,12 @@ export { default as selfAwarenessRouter } from './src/routes/self-awareness.js';
 // Export AG-UI
 export { UIAgent } from './src/agui/ui-agent.js';
 
+// Export adapter
+export { AutoWeaveAdapter } from './src/lib/autoweave-adapter.js';
+
+// Export server utilities
+export { createApp, setupWebSocket, startServer } from './src/server.js';
+
 // Export extension utilities
 export const extensionConfig = {
   name: 'AutoWeave Integration',
@@ -25,22 +32,9 @@ export const extensionConfig = {
   configPath: './extensions/sillytavern/extension-config.json'
 };
 
-// Helper function to start standalone server
-export function startServer(port = 3000, options = {}) {
-  const express = require('express');
-  const app = express();
-  
-  const { default: setupRoutes } = require('./src/routes/index.js');
-  setupRoutes(app, options);
-  
-  const server = app.listen(port, () => {
-    console.log(`AutoWeave UI server running on port ${port}`);
-    console.log(`WebSocket endpoint: ws://localhost:${port}/ws`);
-    console.log(`API endpoint: http://localhost:${port}/api`);
-  });
-  
-  return server;
-}
-
-// Export TypeScript types location
-export const typesPath = './src/lib/autoweave-adapter.ts';
+// Export component paths for frameworks
+export const components = {
+  svelte: {
+    AutoWeavePanel: './src/lib/components/AutoWeavePanel.svelte'
+  }
+};
