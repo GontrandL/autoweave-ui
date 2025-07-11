@@ -1,0 +1,49 @@
+{
+  "name": "@autoweave/ui",
+  "version": "1.0.0",
+  "description": "AutoWeave UI module - WebSocket AG-UI, API routes, and SillyTavern extension",
+  "main": "src/routes/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/routes/index.js",
+    "dev": "nodemon src/routes/index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.16.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "uuid": "^9.0.1",
+    "express-rate-limit": "^7.1.5",
+    "joi": "^17.11.0",
+    "axios": "^1.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.10"
+  },
+  "exports": {
+    ".": "./src/routes/index.js",
+    "./agui": "./src/agui/ui-agent.js",
+    "./routes": "./src/routes/index.js",
+    "./routes/*": "./src/routes/*.js",
+    "./extension": "./extensions/sillytavern/autoweave-extension.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gontran-de-Kermadec/autoweave-ui"
+  },
+  "keywords": [
+    "autoweave",
+    "ui",
+    "websocket",
+    "ag-ui",
+    "api",
+    "sillytavern"
+  ],
+  "author": "AutoWeave Team",
+  "license": "MIT"
+}
